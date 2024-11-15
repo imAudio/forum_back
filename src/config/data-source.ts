@@ -1,6 +1,5 @@
 // src/modules/data-source.ts
 import { DataSource } from 'typeorm';
-import { Users } from './users/users.entity';
 
 const AppDataSource = new DataSource({
   type: 'mysql',
@@ -9,9 +8,8 @@ const AppDataSource = new DataSource({
   username: 'root',
   password: 'loukas30',
   database: 'forum_db',
-  entities: [Users],
-  migrations: ['dist/src/migrations/*.js'],
-  synchronize: true, // set to false for production
+  entities: [__dirname + '/**/*.entity{.ts,.js}'],
+  synchronize: true,
 });
 
 export default AppDataSource;
